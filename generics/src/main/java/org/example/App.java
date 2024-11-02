@@ -57,6 +57,8 @@ public class App {
 
         // Check if two arrays have the same length
         System.out.println(checkArraysSizesEquals(animalsArray, animalsArray));  // Expected output: true
+
+        System.out.println("Bye!");
     }
 
     /**
