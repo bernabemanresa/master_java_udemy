@@ -1,5 +1,0 @@
-compile:
-  script:
-    - ./gradlew build
-  only:
-    - merge_requests
