@@ -101,5 +101,6 @@ public class GenericsTests extends TestCase {
         List<String> messages = new ArrayList<>();
         simpleRectangles.forEach(s -> messages.add(((Drawable)s).draw()));
         return messages;
+
     }
 }
