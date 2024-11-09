@@ -10,7 +10,8 @@
   <name>maven</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>generics</module>
+    <module>generic_methods</module>
+    <module>generic_classes</module>
     <module>generics_exercice_1</module>
   </modules>
 
@@ -28,6 +29,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
