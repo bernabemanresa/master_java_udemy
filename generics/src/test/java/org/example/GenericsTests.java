@@ -28,7 +28,6 @@ public class GenericsTests extends TestCase {
         // Assert the new list is of the same size as the array.
         Assert.assertEquals(2, drawablesList.size());
 
-        Assert.assertEquals(1, 2);
     }
 
     /**
