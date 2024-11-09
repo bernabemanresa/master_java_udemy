@@ -7,16 +7,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>generics</artifactId>
+    <artifactId>generic_classes</artifactId>
     <packaging>jar</packaging>
 
-    <name>generics</name>
+    <name>generic_classes</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-
 
 </project>
