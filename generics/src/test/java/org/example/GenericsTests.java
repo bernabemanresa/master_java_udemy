@@ -14,6 +14,76 @@ import java.util.List;
 public class GenericsTests extends TestCase {
 
     /**
+     * Test conversion of an array of Drawable objects to a List of the same type.
+     */
+    public void testFromArrayToListConversion() {
+        // Create an array of Drawable objects
+        Drawable[] drawableArray = new Drawable[2];
+        drawableArray[0] = new Circle();
+        drawableArray[1] = new Rectangle();
+
+        // Convert the Drawable array to a List using a generic method
+        List<Drawable> drawablesList = fromArrayToList(drawableArray);
+
+        // Assert the new list is of the same size as the array.
+        Assert.assertEquals(2, drawablesList.size());
+
+        Assert.assertEquals(1, 2);
+    }
+
+    /**
+     * Test handling of a list of Drawable objects with an exact match class.
+     */
+    public void testExactMatchClass() {
+        // Create a list of Drawable objects
+        List<Drawable> drawablesList = new ArrayList<>();
+        drawablesList.add(new Circle());
+        drawablesList.add(new Rectangle());
+        drawablesList.add(new SimpleRectangle());
+
+        // Retrieve the draw messages
+        List<String> messages = getDrawableClassesMessages(drawablesList);
+
+        // Assert the size of the messages list
+        Assert.assertEquals(3, messages.size());
+    }
+
+    /**
+     * Test handling of a list of Drawables using an upper-bounded wildcard.
+     */
+    public void testUpperBoundedWildcard() {
+        // Create a list of Drawable objects
+        List<Drawable> drawablesList = new ArrayList<>();
+        drawablesList.add(new Circle());
+        drawablesList.add(new Rectangle());
+        drawablesList.add(new SimpleRectangle());
+
+        // Retrieve the draw messages using upper-bounded wildcard
+        List<String> messages = getDrawableSubclassesMessages(drawablesList);
+
+        // Assert the size of the messages list
+        Assert.assertEquals(3, messages.size());
+    }
+
+    /**
+     * Test handling of a list of supertypes of SimpleRectangle using a lower-bounded wildcard.
+     */
+    public void testLowerBoundedWildcard() {
+        // Create a list of Drawable objects
+        List<Drawable> drawablesList = new ArrayList<>();
+        drawablesList.add(new Circle());
+        drawablesList.add(new Rectangle());
+        drawablesList.add(new SimpleRectangle());
+        drawablesList.add(new VerySimpleRectangle());
+
+        // Retrieve the draw messages using lower-bounded wildcard
+        List<String> messages = getSimpleRectangleSuperclassesMessages(drawablesList);
+
+        // Assert the size of the messages list
+        Assert.assertEquals(4, messages.size());
+    }
+
+    /**
      * Converts an array of any type to a List of the same type.
      *
      * @param genericArray the array to convert
@@ -74,71 +144,4 @@ public class GenericsTests extends TestCase {
         return messages;
     }
 
-    /**
-     * Test conversion of an array of Drawable objects to a List of the same type.
-     */
-    public void testFromArrayToListConversion() {
-        // Create an array of Drawable objects
-        Drawable[] drawableArray = new Drawable[2];
-        drawableArray[0] = new Circle();
-        drawableArray[1] = new Rectangle();
-
-        // Convert the Drawable array to a List using a generic method
-        List<Drawable> drawablesList = fromArrayToList(drawableArray);
-
-        // Assert the new list is of the same size as the array.
-        Assert.assertEquals(2, drawablesList.size());
-    }
-
-    /**
-     * Test handling of a list of Drawable objects with an exact match class.
-     */
-    public void testExactMatchClass() {
-        // Create a list of Drawable objects
-        List<Drawable> drawablesList = new ArrayList<>();
-        drawablesList.add(new Circle());
-        drawablesList.add(new Rectangle());
-        drawablesList.add(new SimpleRectangle());
-
-        // Retrieve the draw messages
-        List<String> messages = getDrawableClassesMessages(drawablesList);
-
-        // Assert the size of the messages list
-        Assert.assertEquals(3, messages.size());
-    }
-
-    /**
-     * Test handling of a list of Drawables using an upper-bounded wildcard.
-     */
-    public void testUpperBoundedWildcard() {
-        // Create a list of Drawable objects
-        List<Drawable> drawablesList = new ArrayList<>();
-        drawablesList.add(new Circle());
-        drawablesList.add(new Rectangle());
-        drawablesList.add(new SimpleRectangle());
-
-        // Retrieve the draw messages using upper-bounded wildcard
-        List<String> messages = getDrawableSubclassesMessages(drawablesList);
-
-        // Assert the size of the messages list
-        Assert.assertEquals(3, messages.size());
-    }
-
-    /**
-     * Test handling of a list of supertypes of SimpleRectangle using a lower-bounded wildcard.
-     */
-    public void testLowerBoundedWildcard() {
-        // Create a list of Drawable objects
-        List<Drawable> drawablesList = new ArrayList<>();
-        drawablesList.add(new Circle());
-        drawablesList.add(new Rectangle());
-        drawablesList.add(new SimpleRectangle());
-        drawablesList.add(new VerySimpleRectangle());
-
-        // Retrieve the draw messages using lower-bounded wildcard
-        List<String> messages = getSimpleRectangleSuperclassesMessages(drawablesList);
-
-        // Assert the size of the messages list
-        Assert.assertEquals(4, messages.size());
-    }
 }
